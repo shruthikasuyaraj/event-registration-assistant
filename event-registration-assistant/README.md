@@ -28,6 +28,14 @@ worker ──▶ supervisor
                                       * side effects: once per idempotency key
 ```
 
+### Terminal UI
+
+```powershell
+python -m app.ui
+```
+
+Follow the prompts: enter a student ID and a question. Type `quit` to exit.
+
 ## Run it — no API key needed
 
 ### Windows

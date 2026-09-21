@@ -17,13 +17,13 @@ def print_step(step: dict) -> None:
     if step["kind"] == "model":
         return
     if step["kind"] == "delegate":
-        print(f"  {YELLOW}supervisor \u2192 {step['tool']}{RESET}{DIM}({short(step['args'], 100)}){RESET}")
+        print(f"  {YELLOW}supervisor -> {step['tool']}{RESET}{DIM}({short(step['args'], 100)}){RESET}")
     elif agent == "supervisor":
         answer = step["result"].get("answer") or step["result"].get("error")
         colour = DIM if step["ok"] else RED
-        print(f"  {colour}           \u2190 {short(answer, 110)}{RESET}")
+        print(f"  {colour}           <- {short(answer, 110)}{RESET}")
     else:
         colour = MAGENTA if step["ok"] else RED
-        print(f"      {colour}{agent} \u2192 {step['tool']}{RESET}{DIM}({short(step['args'], 80)}){RESET}")
+        print(f"      {colour}{agent} -> {step['tool']}{RESET}{DIM}({short(step['args'], 80)}){RESET}")
         note = f"  {GREEN}[replayed: stored result, nothing done again]{RESET}" if step.get("replayed") else ""
-        print(f"      {DIM}{' ' * len(agent)} \u2190 {short(step['result'], 100)}{RESET}{note}")
+        print(f"      {DIM}{' ' * len(agent)} <- {short(step['result'], 100)}{RESET}{note}")
